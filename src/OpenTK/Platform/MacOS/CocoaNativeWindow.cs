@@ -735,6 +735,9 @@ namespace OpenTK.Platform.MacOS
                             // Use absolute coordinates
                             var pf = Cocoa.SendPoint(e, selLocationInWindowOwner);
 
+                            var dx = (int)Math.Round(Cocoa.SendFloat(e, selDeltaX));
+                            var dy = (int)Math.Round(Cocoa.SendFloat(e, selDeltaY));
+
                             // Convert from points to pixel coordinates
                             var rf = Cocoa.SendRect(
                                 windowInfo.Handle,
@@ -761,11 +764,7 @@ namespace OpenTK.Platform.MacOS
                                 MoveCursorInWindow(p);
                             }
 
-                            // Only raise events when the mouse has actually moved
-                            if (MouseState.X != p.X || MouseState.Y != p.Y)
-                            {
-                                OnMouseMove(p.X, p.Y);
-                            }
+                            OnMouseMove(p.X, p.Y, dx, dy);
                         }
                         break;
 

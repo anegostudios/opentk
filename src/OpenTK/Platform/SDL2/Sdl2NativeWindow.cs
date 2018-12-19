@@ -294,8 +294,8 @@ namespace OpenTK.Platform.SDL2
         {
             float scale = window.ClientSize.Width / (float)window.Size.Width;
             window.OnMouseMove(
-                (int)Math.Round(ev.X * scale),
-                (int)Math.Round(ev.Y * scale));
+                (int)Math.Round(ev.X * scale), (int)Math.Round(ev.Y * scale),
+                (int)Math.Round(ev.Xrel * scale), (int)Math.Round(ev.Yrel * scale));
             Sdl2Mouse.Scale = scale;
         }
 

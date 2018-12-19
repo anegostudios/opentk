@@ -268,15 +268,15 @@ namespace OpenTK.Platform
             MouseUp(this, e);
         }
 
-        protected void OnMouseMove(int x, int y)
+        protected void OnMouseMove(int x, int y, int xDelta, int yDelta)
         {
             MouseState.X = x;
             MouseState.Y = y;
 
             var e = MouseMoveArgs;
             e.Mouse = MouseState;
-            e.XDelta = MouseState.X - PreviousMouseState.X;
-            e.YDelta = MouseState.Y - PreviousMouseState.Y;
+            e.XDelta = xDelta;
+            e.YDelta = yDelta;
 
             if (e.XDelta == 0 && e.YDelta == 0)
             {

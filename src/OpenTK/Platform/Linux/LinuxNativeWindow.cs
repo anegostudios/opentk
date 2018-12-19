@@ -296,6 +296,9 @@ namespace OpenTK.Platform.Linux
                 int x = mouse.X;
                 int y = mouse.Y;
 
+                int xDelta = x - previous_mouse.X;
+                int yDelta = y - previous_mouse.Y;
+
                 // Make sure the mouse cannot leave the GameWindow when captured
                 if (!CursorVisible)
                 {
@@ -309,7 +312,7 @@ namespace OpenTK.Platform.Linux
 
                 if (x != previous_mouse.X || y != previous_mouse.Y)
                 {
-                    OnMouseMove(x, y);
+                    OnMouseMove(x, y, xDelta, yDelta);
                 }
             }
 
